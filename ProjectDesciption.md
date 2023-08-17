@@ -66,7 +66,7 @@ While we would like to see challenging games attempted by the more confident pro
 ## Some inspiration for possible projects
 _Breakout_. You could create a proper game out of the bouncing ball assignment. You would need to consider how to make it more compelling and add extra features, like special bricks that change the ball’s behaviour.
 
-You could implement an ’80s arcade game like _Frogger_ or _Pacman_, perhaps as an abstract shape-based game.
+You could implement an ’80s arcade game like _Frogger_ or _Pacman_.
 
 _Pacman_ is grid based, so you can represent the playing arena a two-dimensional array in your program.
 
@@ -75,3 +75,5 @@ _Frogger_ has distinct horizontal zones, each with a limited number of objects i
 _Color Switch_ is an attractive, compelling game using simple 2D computer graphics [[http://colorswitchaz.com/][http://colorswitchaz.com]] It might provide inspiration for a clean and simple graphical style. The game play of _Color Switch_ might be challenging to program but simpler ideas could work well.
 
 You could try a 2D version of _Asteroids_, with attractive geometry. This screen shot is from _Geometry Wars_.
+
+https://itch.io contains many examples of good games.
