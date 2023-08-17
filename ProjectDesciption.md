@@ -26,7 +26,7 @@ Your plan should be completed using the [[Game Project template]] and it should 
 
 Your game does not have to be original, your goal is to learn programming, and so you must understand all the code you submit. You should use existing games, artwork, and designs as inspiration. You may submit up to nine pages of sketches, images, screenshots, and notes as appendices to your one-page plan, which can demonstrate either early ideas or sources that you are using for inspiration.
 
-If you use appendices, please submit a PDF file. If not, a one-page text file is fine. If you are using `gitlab.ecs.vuw.ac.nz` then you should submit the plan in markdown ( a *.md file)
+If you use appendices, please submit a PDF file. If not, a one-page text file is fine. If you are using `gitlab.ecs.vuw.ac.nz` then you should submit the plan in markdown ( in the plan.md file)
 
 ## Submission part 2 — the program — *14 marks*
 
@@ -42,8 +42,8 @@ If you are using our gitlab.ecs.vuw.ac.nz then you can just select download and 
 *Your sketches must run on the version of Processing used on the ECS machines without needing to be modified.*
 
 Marking will be done by tutors in one-on-one sessions with you during your usual Lab time in Week 12 or 13.
-## Requirements
 
+## Requirements
 You will write a computer game or “interactive art work”. It needs to have the following features:
    * Written in Processing.
    * Will run in the version of Processing installed on the ECS computers.
@@ -51,8 +51,8 @@ You will write a computer game or “interactive art work”. It needs to have t
    * Has user interaction (that is, the user must interact with the program which affects the game in some way, through the mouse or keyboard or both).
    * Has graphical objects that interact with one another in some way (for example, the ball interacting with blocks from Assignment 2 Completion).
    * Has at least two “levels” or some other way to reset the game to a different configuration. This is to demonstrate a couple of programming skills: (1) that you are able to reset without having to quit and re-run the program from the start; (2) that you can separate game play from the graphical objects in such a way that your program provides the same game play in at least two different situations.
-## Assessment
 
+## Assessment
 You will principally be marked in your one-on-one tutor session. You will submit one page of reflection on your experience, which can be used in off-line moderation of your marks.
 
 For this assignment the tutors will assess the following criteria:
@@ -62,8 +62,8 @@ For this assignment the tutors will assess the following criteria:
    * Design (how good are the visual results and the game play)
    * Requirements (did you meet all the requirements in the list above)
 While we would like to see challenging games attempted by the more confident programmers in the class, we want people to attempt something that they can comfortably complete within the time available. Therefore we will allocate 60% of the marks towards the technical, design and requirements criteria (i.e., did you produce a good implementation), with 30% for vision and achievement (i.e., how challenging it is), and the remaining 10% for your reflection on your experience. _The marking rubric is available on the course website_.
-## Some inspiration for possible projects
 
+## Some inspiration for possible projects
 _Breakout_. You could create a proper game out of the bouncing ball assignment. You would need to consider how to make it more compelling and add extra features, like special bricks that change the ball’s behaviour.
 
 You could implement an ’80s arcade game like _Frogger_ or _Pacman_, perhaps as an abstract shape-based game.
