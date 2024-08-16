@@ -6,7 +6,7 @@ You will write a computer game or “interactive art work” of your own design.
 ## Learning objectives
 To learn how to manage a substantial programming project. To experience the challenges of game design, including game-play, visual design, interaction, and graphics.
 
-## Submission part 1 — a plan — *2 marks*
+## Submission part 1 — a plan — *5 marks*
 You must submit a *one-page plan* for what you intend to do. This is so that your tutor can discuss your plan with you in Week 7 or 8 and advise you on whether you have scoped the project correctly. They will check whether you are being over-ambitious (i.e., spending a lot of time for no extra marks) or under-ambitious (i.e., specifying something that will score poorly).
 
 Your plan should be completed using the [[Game Project template]] and it should cover the following points:
@@ -28,7 +28,7 @@ Your game does not have to be original, your goal is to learn programming, and s
 
 If you use appendices, please submit a PDF file. If not, a one-page text file is fine. If you are using `gitlab.ecs.vuw.ac.nz` then you should submit the plan in markdown ( in the plan.md file)
 
-## Submission part 2 — the program — *14 marks*
+## Submission part 2 — the program — *10 marks*
 
 You will submit both a *Processing sketch* and a *single-page text document _or_ single page PDF document* reflecting on your experience (_use the template or markdown_).
 
