@@ -9,7 +9,7 @@ To learn how to manage a substantial programming project. To experience the chal
 ## Submission part 1 — a plan — *5 marks*
 You must submit a *one-page plan* for what you intend to do. This is so that your tutor can discuss your plan with you in Week 7 or 8 and advise you on whether you have scoped the project correctly. They will check whether you are being over-ambitious (i.e., spending a lot of time for no extra marks) or under-ambitious (i.e., specifying something that will score poorly).
 
-Your plan should be completed using the [[Game Project template]] and it should cover the following points:
+Your plan should be completed using the [[Plan.md]] and it should cover the following points:
 
 *Vision*: what you intend to create. Three paragraphs. One on each of the following:
    1. *Game concept*: An overview of the game.
