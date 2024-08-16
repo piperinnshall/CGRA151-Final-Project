@@ -16,13 +16,13 @@ Your plan should be completed using the [Game Plan](Plan.md) and it should cover
    1. *Game play*: The design of the interaction that you plan to have.
    1. *Visual design*: The design of the graphical style and colour scheme you plan to use.
 
-*Timetable*: key milestones in the development of the project. You should spend about 12 hours on this project spread over the three weeks from 19 September to 10 October. For your plan, we require that you have three milestones in this time:
+*Timetable*: key milestones in the development of the project. You should spend about 12 hours on this project spread over the three weeks from 18 September to 9 October. For your plan, we require that you have three milestones in this time:
 
-26 September: *The core of the program*. All the critical components will work, at least roughly. You could hand this in as your submission, if you really had to. In your plan, you should specify what you will definitely get working by this date.
+25 September: *The core of the program*. All the critical components will work, at least roughly. You could hand this in as your submission, if you really had to. In your plan, you should specify what you will definitely get working by this date.
 
-3 October: *A reasonable submission*. Everything should be working, and you should be happy to submit this. In your plan, you should specify what such a “reasonable submission” would consist of.
+2 October: *A reasonable submission*. Everything should be working, and you should be happy to submit this. In your plan, you should specify what such a “reasonable submission” would consist of.
 
-10 October: *A well-polished submission*. The final week should be spent polishing your reasonable submission into something better. In your plan, you should specify what features of the program would be considered “polish”. You might like to suggest a couple of extensions that you will not commit to producing but that you could attempt to implement if you have time.
+9 October: *A well-polished submission*. The final week should be spent polishing your reasonable submission into something better. In your plan, you should specify what features of the program would be considered “polish”. You might like to suggest a couple of extensions that you will not commit to producing but that you could attempt to implement if you have time.
 
 Your game does not have to be original, your goal is to learn programming, and so you must understand all the code you submit. You should use existing games, artwork, and designs as inspiration. You may submit up to nine pages of sketches, images, screenshots, and notes as appendices to your one-page plan, which can demonstrate either early ideas or sources that you are using for inspiration.
 
