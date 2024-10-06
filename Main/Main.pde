@@ -6,15 +6,21 @@ void settings() {
 }
 
 void setup() {
-    background(255);
-    setupKey();
     setupGame();
 }
 
 void draw() {
-    int[][] test = Map.get();
+    background(255);
+
+    debug();
+
+    map.render();
+    map.move();
+    map.update();
+
     for (Entity entity : entities) {
         entity.render();
         entity.move();
+        entity.update();
     }
 }

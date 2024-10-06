@@ -4,17 +4,8 @@ class Player extends Entity {
     }
 
     void move() {
-        for (String action : actionStates.keySet()) {
-            if (actionStates.get(action)) {
-                if (action.equals("MOVE-UP")) y -= speed;
-                if (action.equals("MOVE-DOWN")) y += speed;
-                if (action.equals("MOVE-LEFT")) x -= speed; 
-                if (action.equals("MOVE-RIGHT")) x += speed; 
-            }
-        }
     }
 
     void update() {
-
     }
 }
