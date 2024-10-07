@@ -1,7 +1,7 @@
 ArrayList<Entity> entities;
 Player player;
 Keys keys;
-MapImages mapImages;
+Images images;
 Map map;
 
 void setupGame() {
@@ -10,13 +10,10 @@ void setupGame() {
     player = new Player(WIDTH / 2, HEIGHT / 2, 50, -1, 30);
     entities.add(player);
 
-    mapImages = new MapImages();
+    images = new Images("8BITCanariPackTopDown/TILESET/PixelPackTOPDOWN8BIT.png", 16, 16);
     keys = new Keys();
-    map = new Map();
+    map = new Map("Maps/Map1.txt");
 
-
-    keys.setup();
-    map.setup("Maps/Map1.txt");
 }
 
 void debug() {

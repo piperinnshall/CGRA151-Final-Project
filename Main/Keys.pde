@@ -9,7 +9,8 @@ class Keys {
     HashMap<String, Boolean> actions;
 
     Keys() {
-        actions = new HashMap<String, Boolean>();
+        this.actions = new HashMap<String, Boolean>();
+        setup();
     }
 
     void setup() {

@@ -1,13 +1,19 @@
 class Map {
+    private String path;
     private int[][] map;
     private float x, y;
-    private float tileSize = 50;
+    private float tileSize = 64;
 
-    void setup(String filename) {
+    Map(String path) {
+        this.path = path;
+        setup();
+    }
+
+    void setup() {
         try {
-            String[] lines = loadStrings(filename);
+            String[] lines = loadStrings(path);
             if (lines == null || lines.length == 0) {
-                throw new Exception("File is empty or could not be read: " + filename);
+                throw new Exception("File could not be read: " + path);
             }
 
             map = new int[lines.length][];
@@ -24,24 +30,23 @@ class Map {
             println("An error occurred: " + e.getMessage());
         }
     }
+
     void render() {
+        noSmooth();
+
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                if (map[i][j] == 0) fill(128, 128, 128);  // Grey for road
-                if (map[i][j] == 1) fill(139, 69, 19);    // Brown for mud or construction area
-                if (map[i][j] == 2) fill(0, 255, 0);      // Green for grass or parks
-                if (map[i][j] == 3) fill(64, 64, 64);     // Dark grey for buildings
-                if (map[i][j] == 4) fill(0, 0, 255);      // Blue for water (lakes, rivers, etc.)
-                if (map[i][j] == 5) fill(211, 211, 211);  // Light grey for sidewalks
-                if (map[i][j] == 6) fill(222, 184, 135);  // Light brown for residential areas
-                if (map[i][j] == 7) fill(101, 67, 33);    // Dark brown for industrial areas
-                if (map[i][j] == 8) fill(255, 0, 0);      // Red for traffic lights or markers
-                if (map[i][j] == 9) fill(192, 192, 192);  // Silver for metallic structures (bridges, etc.)
+                PImage tile = images.getTile(map[i][j]);
 
                 float tileX = j * tileSize - x;
                 float tileY = i * tileSize - y;
 
-                 square(WIDTH / 2 + tileX, HEIGHT / 2 + tileY, tileSize);
+                float centeredX = WIDTH / 2 + tileX;
+                float centeredY = WIDTH / 2 + tileY;
+
+                if (tile != null) {
+                    image(tile, centeredX, centeredY, tileSize, tileSize);
+                }
             }
         } 
     }
