@@ -6,7 +6,11 @@ class Keys {
         {"d", "MOVE-RIGHT"}
     };
 
-    HashMap<String, Boolean> actions = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> actions;
+
+    Keys() {
+        actions = new HashMap<String, Boolean>();
+    }
 
     void setup() {
         for (int i = 0; i < maps.length; i++) {

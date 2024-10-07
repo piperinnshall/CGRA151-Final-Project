@@ -1,5 +1,5 @@
-int WIDTH = 700;
-int HEIGHT = 700;
+int WIDTH = 1920;
+int HEIGHT = 1080;
 
 void settings() {
     size(WIDTH, HEIGHT);
@@ -12,8 +12,6 @@ void setup() {
 void draw() {
     background(255);
 
-    debug();
-
     map.render();
     map.move();
     map.update();
@@ -23,4 +21,6 @@ void draw() {
         entity.move();
         entity.update();
     }
+
+    debug();
 }
