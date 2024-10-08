@@ -21,4 +21,7 @@ void debug() {
     fill(0);
     String text = "x: " + map.x + " y: " + map.y;
     text(text, width - textWidth(text) - 10, 40);
+
+    if (keys.actions.get("DRAW-SHEET")) images.drawTileset(10, 10, 14, 14);
+    if (keys.actions.get("LOAD-MAP")) map.setup();
 }

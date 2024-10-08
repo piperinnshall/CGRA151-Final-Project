@@ -32,8 +32,6 @@ class Map {
     }
 
     void render() {
-        noSmooth();
-
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 PImage tile = images.getTile(map[i][j]);
@@ -42,7 +40,7 @@ class Map {
                 float tileY = i * tileSize - y;
 
                 float centeredX = WIDTH / 2 + tileX;
-                float centeredY = WIDTH / 2 + tileY;
+                float centeredY = HEIGHT / 2 + tileY;
 
                 if (tile != null) {
                     image(tile, centeredX, centeredY, tileSize, tileSize);

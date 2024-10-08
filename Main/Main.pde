@@ -3,6 +3,7 @@ int HEIGHT = 1080;
 
 void settings() {
     size(WIDTH, HEIGHT);
+    noSmooth();
 }
 
 void setup() {

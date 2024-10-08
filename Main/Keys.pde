@@ -3,7 +3,9 @@ class Keys {
         {"w", "MOVE-UP"},
         {"a", "MOVE-LEFT"},
         {"s", "MOVE-DOWN"},
-        {"d", "MOVE-RIGHT"}
+        {"d", "MOVE-RIGHT"},
+        {"q", "DRAW-SHEET"},
+        {"r", "LOAD-MAP"},
     };
 
     HashMap<String, Boolean> actions;
