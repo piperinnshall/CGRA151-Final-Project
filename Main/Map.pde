@@ -12,6 +12,7 @@ class Map {
     void setup() {
         try {
             String[] lines = loadStrings(path);
+
             if (lines == null || lines.length == 0) {
                 throw new Exception("File could not be read: " + path);
             }
@@ -26,15 +27,35 @@ class Map {
                     map[i][j] = Integer.parseInt(numbers[j]);
                 }
             }
+
         } catch (Exception e) {
             println("An error occurred: " + e.getMessage());
         }
     }
 
+    void save(String path) {
+        String[] lines = new String[map.length];
+
+        for (int i = 0; i < map.length; i++) {
+            String[] stringRow = new String[map[i].length];
+            for (int j = 0; j < map[i].length; j++) {
+                stringRow[j] = String.valueOf(map[i][j]);
+            }
+            lines[i] = join(stringRow, " ");
+        }
+
+        try {
+            saveStrings(path, lines);
+        } catch (Exception e) {
+            println("An error occurred: " + e.getMessage());
+        }
+    }
+
+
     void render() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                PImage tile = images.getTile(map[i][j]);
+                PImage tile = tileset.getTile(map[i][j]);
 
                 float tileX = j * tileSize - x;
                 float tileY = i * tileSize - y;
@@ -74,6 +95,13 @@ class Map {
         y = constrain(y, 0, map.length * tileSize); 
     }
 
+    void zoom(int amount) {
+        if (amount > 0 && tileSize + amount > 2000) return;
+        if (amount < 0 && tileSize + amount < 10) return;
+
+        tileSize += amount;
+    }
+
     private void moveX(float speed) {
         x += speed;
     }
@@ -93,4 +121,3 @@ class Map {
         }
     }
 }
-

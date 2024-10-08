@@ -6,6 +6,8 @@ class Keys {
         {"d", "MOVE-RIGHT"},
         {"q", "DRAW-SHEET"},
         {"r", "LOAD-MAP"},
+        {"k", "ZOOM-OUT"},
+        {"j", "ZOOM-IN"},
     };
 
     HashMap<String, Boolean> actions;
