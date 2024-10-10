@@ -1,26 +1,29 @@
 abstract class Entity {
-    float x, y;
+    PVector position;
+    float rotation;
     float size;
     float speed;
     float health;
 
-    Entity(float x, float y, float speed, float health, float size) {
-        this.x = x;
-        this.y = y;
+    Entity(float rotation, float speed, float health, float size) {
+        this.rotation = rotation;
         this.speed = speed;
         this.health = health;
         this.size = size;
+        setup();
     }
 
-    boolean collides(Entity other) {
-        float distance = dist(x, y, other.x, other.y);
-        return distance < (this.size / 2 + other.size / 2);
+    void setup() {
+        position = new PVector(WIDTH / 2, HEIGHT / 2);
     }
 
     void render() {
-        ellipseMode(CENTER);
-        fill(100);
-        circle(this.x, this.y, this.size);
+        pushMatrix();
+        translate(position.x, position.y);
+        rotate(rotation);
+        rectMode(CENTER);
+        rect(0, 0, size, size / 2);
+        popMatrix();
     }
 
     abstract void move();

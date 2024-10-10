@@ -1,5 +1,6 @@
-int WIDTH = 1920;
-int HEIGHT = 1080;
+int WIDTH = 1900;
+int HEIGHT = 1000;
+Game game;
 
 void settings() {
     size(WIDTH, HEIGHT);
@@ -7,21 +8,11 @@ void settings() {
 }
 
 void setup() {
-    setupGame();
+    game = new Game();
 }
 
 void draw() {
     background(0);
-
-    map.render();
-    map.move();
-    map.update();
-
-    for (Entity entity : entities) {
-        entity.render();
-        entity.move();
-        entity.update();
-    }
-
-    debug();
+    //game.run();
+    game.dev();
 }

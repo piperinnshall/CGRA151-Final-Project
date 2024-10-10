@@ -26,15 +26,7 @@ class Tileset {
         }
     }
 
-    PImage getTile(int index) {
-        if (index >= 0 && index < tiles.length) {
-            return tiles[index];
-        } else {
-            return null;
-        }
-    }
-
-    void drawTileset(int tileSize) {
+    void draw(int tileSize) {
         textAlign(CENTER, CENTER);
         fill(255);
         for (int y = 0; y < rows; y++) {
@@ -49,6 +41,14 @@ class Tileset {
                 textSize(10);
                 text(index, tileX + tileSize / 2, tileY + tileSize / 2);
             }
+        }
+    }
+
+    PImage getTile(int index) {
+        if (index >= 0 && index < tiles.length) {
+            return tiles[index];
+        } else {
+            return null;
         }
     }
 }

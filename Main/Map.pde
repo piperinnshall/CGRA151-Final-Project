@@ -1,7 +1,7 @@
 class Map {
+    private PVector position;
     private String path;
-    private int[][] map;
-    private float x, y;
+    private int[][] layout;
     private float tileSize = 64;
 
     Map(String path) {
@@ -10,6 +10,8 @@ class Map {
     }
 
     void setup() {
+        position = new PVector(0, 0);
+
         try {
             String[] lines = loadStrings(path);
 
@@ -17,14 +19,14 @@ class Map {
                 throw new Exception("File could not be read: " + path);
             }
 
-            map = new int[lines.length][];
+            layout = new int[lines.length][];
 
             for (int i = 0; i < lines.length; i++) {
                 String[] numbers = split(lines[i], ' ');
-                map[i] = new int[numbers.length];
+                layout[i] = new int[numbers.length];
 
                 for (int j = 0; j < numbers.length; j++) {
-                    map[i][j] = Integer.parseInt(numbers[j]);
+                    layout[i][j] = Integer.parseInt(numbers[j]);
                 }
             }
 
@@ -33,32 +35,13 @@ class Map {
         }
     }
 
-    void save(String path) {
-        String[] lines = new String[map.length];
-
-        for (int i = 0; i < map.length; i++) {
-            String[] stringRow = new String[map[i].length];
-            for (int j = 0; j < map[i].length; j++) {
-                stringRow[j] = String.valueOf(map[i][j]);
-            }
-            lines[i] = join(stringRow, " ");
-        }
-
-        try {
-            saveStrings(path, lines);
-        } catch (Exception e) {
-            println("An error occurred: " + e.getMessage());
-        }
-    }
-
-
     void render() {
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                PImage tile = tileset.getTile(map[i][j]);
+        for (int i = 0; i < layout.length; i++) {
+            for (int j = 0; j < layout[i].length; j++) {
+                PImage tile = tileset.getTile(layout[i][j]);
 
-                float tileX = j * tileSize - x;
-                float tileY = i * tileSize - y;
+                float tileX = j * tileSize - position.x;
+                float tileY = i * tileSize - position.y;
 
                 float centeredX = WIDTH / 2 + tileX;
                 float centeredY = HEIGHT / 2 + tileY;
@@ -71,6 +54,16 @@ class Map {
     }
 
     void move() {
+        if (keys.actions.get("ACCELERATE")) {
+            float dx = cos(player.rotation) * player.speed;
+            float dy = sin(player.rotation) * player.speed;
+            
+            moveX(-dx);
+            moveY(-dy);
+        }   
+    }
+
+    void moveDev() {
         int activeActions = 0;
         float speedMultiplier = 1.0;
 
@@ -90,9 +83,35 @@ class Map {
         if (keys.actions.get("MOVE-RIGHT")) moveX(player.speed * speedMultiplier);
     }
 
+    private void moveX(float speed) {
+        position.x += speed;
+    }
+
+    private void moveY(float speed) {
+        position.y += speed;
+    }
+
     void update() {
-        x = constrain(x, 0, map[0].length * tileSize); 
-        y = constrain(y, 0, map.length * tileSize); 
+        position.x = constrain(position.x, 0, layout[0].length * tileSize); 
+        position.y = constrain(position.y, 0, layout.length * tileSize); 
+    }
+
+    void save(String path) {
+        String[] lines = new String[layout.length];
+
+        for (int i = 0; i < layout.length; i++) {
+            String[] stringRow = new String[layout[i].length];
+            for (int j = 0; j < layout[i].length; j++) {
+                stringRow[j] = String.valueOf(layout[i][j]);
+            }
+            lines[i] = join(stringRow, " ");
+        }
+
+        try {
+            saveStrings(path, lines);
+        } catch (Exception e) {
+            println("An error occurred: " + e.getMessage());
+        }
     }
 
     void zoom(int amount) {
@@ -100,24 +119,5 @@ class Map {
         if (amount < 0 && tileSize + amount < 10) return;
 
         tileSize += amount;
-    }
-
-    private void moveX(float speed) {
-        x += speed;
-    }
-
-    private void moveY(float speed) {
-        y += speed;
-    }
-
-    void printer() {
-        if (map == null) return;
-
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                print(map[i][j] + " ");
-            }
-            println();
-        }
     }
 }
