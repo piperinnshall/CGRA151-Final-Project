@@ -8,8 +8,10 @@ class Keys {
         {"o", "ZOOM-OUT"},
         {"u", "ZOOM-IN"},
         {"w", "ACCELERATE"},
+        {"s", "DECELERATE"},
         {"a", "TURN-LEFT"},
         {"d", "TURN-RIGHT"},
+
     };
 
     HashMap<String, Boolean> actions;

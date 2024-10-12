@@ -12,7 +12,7 @@ class Game {
         loadInputs();
 
         entities = new ArrayList<Entity>();
-        player = new Player(PI/3.0, 20, -1, 30);
+        player = new Player(PI/4, 0.05, 0.1, 0, 160, 35, 15, 0.03);
         entities.add(player);
     }
 
@@ -71,7 +71,7 @@ class Game {
 
         textSize(32);
         fill(255);
-        String text = "x: " + map.position.x + " y: " + map.position.y;
+        String text = "x: " + map.position.x + " y: " + map.position.y + "size: " + map.tileSize;
         text(text, width - textWidth(text) - 10, 40);
 
         if (keys.actions.get("DRAW-SHEET")) tileset.draw(28);

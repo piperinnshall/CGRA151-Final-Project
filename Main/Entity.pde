@@ -1,20 +1,29 @@
 abstract class Entity {
-    PVector position;
     float rotation;
-    float size;
-    float speed;
+    float acceleration, deceleration;
     float health;
+    float size;
+    float maxSpeed;
+    float maxReverse;
+    float rotationSpeed;
+    float currentSpeed;
+    PVector position;
 
-    Entity(float rotation, float speed, float health, float size) {
+    Entity(float rotation, float acceleration, float deceleration, float health, float size, float maxSpeed, float maxReverse, float rotationSpeed) {
         this.rotation = rotation;
-        this.speed = speed;
+        this.acceleration = acceleration;
+        this.deceleration = deceleration;
         this.health = health;
         this.size = size;
-        setup();
+        this.maxSpeed = maxSpeed;
+        this.maxReverse = maxReverse;
+        this.rotationSpeed = rotationSpeed;
+        this.setup();
     }
 
     void setup() {
-        position = new PVector(WIDTH / 2, HEIGHT / 2);
+        this.currentSpeed = 0;
+        this.position = new PVector(WIDTH / 2, HEIGHT / 2);
     }
 
     void render() {
