@@ -32,9 +32,44 @@ abstract class Entity {
         translate(camera.x, camera.y);
         rotate(rotation);
         rectMode(CENTER);
+        fill(255, 0, 0);
         rect(0, 0, size, size / 2);
         popMatrix();
+
+        fill(0, 255, 0);
+        PVector[] cornerPositions = corners();
+        for (PVector corner : cornerPositions) {
+            pushMatrix();
+            translate(corner.x, corner.y);
+            rotate(rotation);
+            rectMode(CENTER);
+            rect(0, 0, 10, 5);
+            popMatrix();
+        }
     }
+
+    PVector[] corners() {
+        PVector[] corners = new PVector[4];
+
+        float width = size;
+        float height = size / 2;
+
+        corners[0] = new PVector(-width / 2, -height / 2);
+        corners[1] = new PVector(width / 2, -height / 2);
+        corners[2] = new PVector(-width / 2, height / 2);
+        corners[3] = new PVector(width / 2, height / 2);
+
+        PVector[] rotatedCorners = new PVector[4];
+        for (int i = 0; i < corners.length; i++) {
+            PVector corner = corners[i].copy();
+            corner.rotate(rotation);
+            corner.add(camera);
+            rotatedCorners[i] = corner;
+        }
+
+        return rotatedCorners;
+    }
+
 
     abstract void move();
     abstract void update();

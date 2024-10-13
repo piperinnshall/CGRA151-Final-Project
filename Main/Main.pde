@@ -1,5 +1,5 @@
-int WIDTH = 1420;
-int HEIGHT = 800;
+int WIDTH = 1900;
+int HEIGHT = 1060;
 Game game;
 
 void settings() {
