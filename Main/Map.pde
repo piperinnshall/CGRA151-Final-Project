@@ -1,8 +1,8 @@
 class Map {
-    private PVector position;
     private String path;
     private int[][] layout;
-    private float tileSize = 96;
+    private float tileSize;
+    private PVector position;
 
     Map(String path) {
         this.path = path;
@@ -10,10 +10,11 @@ class Map {
     }
 
     void setup() {
+        tileSize = 96;
         position = new PVector(0, 0);
 
         try {
-            String[] lines = loadStrings(path);
+            String[] lines = loadStrings(path + ".txt");
 
             if (lines == null || lines.length == 0) {
                 throw new Exception("File could not be read: " + path);
@@ -43,10 +44,12 @@ class Map {
                 float tileX = j * tileSize - position.x;
                 float tileY = i * tileSize - position.y;
 
-                float centeredX = tileX + player.position.x;
-                float centeredY = tileY + player.position.y;
+                float centeredX = tileX + player.camera.x;
+                float centeredY = tileY + player.camera.y;
 
-                if (tile != null) {
+                if (tile != null &&
+                        centeredX + tileSize > 0 && centeredX < WIDTH &&
+                        centeredY + tileSize > 0 && centeredY < HEIGHT) {
                     image(tile, centeredX, centeredY, tileSize, tileSize);
                 }
             }
@@ -54,49 +57,16 @@ class Map {
     }
 
     void move() {
-        float dx = player.currentSpeed * cos(player.rotation);
-        float dy = player.currentSpeed * sin(player.rotation);
-
-        moveX(-dx);
-        moveY(-dy);
+        position.add(new PVector(-player.currentSpeed * cos(player.rotation), -player.currentSpeed * sin(player.rotation)));
     }
 
     void update() {
-        position.x = constrain(position.x, 0, layout[0].length * tileSize); 
-        position.y = constrain(position.y, 0, layout.length * tileSize); 
+        position.set(constrain(position.x, 0, layout[0].length * tileSize), constrain(position.y, 0, layout.length * tileSize));
+
+        tileSize = constrain(tileSize, 20, 1000);
     }
 
-
-    private void moveX(float speed) {
-        position.x += speed;
-    }
-
-    private void moveY(float speed) {
-        position.y += speed;
-    }
-
-
-    void moveDev() {
-        int activeActions = 0;
-        float speedMultiplier = 100.0;
-
-        for (String action : keys.actions.keySet()) {
-            if (keys.actions.get(action)) {
-                activeActions++;
-            }
-        }
-
-        if (activeActions > 1) {
-            speedMultiplier = 100.0 / sqrt(2);
-        }
-
-        if (keys.actions.get("MOVE-UP")) moveY(-player.acceleration * speedMultiplier);
-        if (keys.actions.get("MOVE-DOWN")) moveY(player.acceleration * speedMultiplier);
-        if (keys.actions.get("MOVE-LEFT")) moveX(-player.acceleration * speedMultiplier);
-        if (keys.actions.get("MOVE-RIGHT")) moveX(player.acceleration * speedMultiplier);
-    }
-
-    void save(String path) {
+    void save() {
         String[] lines = new String[layout.length];
 
         for (int i = 0; i < layout.length; i++) {
@@ -108,16 +78,9 @@ class Map {
         }
 
         try {
-            saveStrings(path, lines);
+            saveStrings(path + ".txt", lines);
         } catch (Exception e) {
             println("An error occurred: " + e.getMessage());
         }
-    }
-
-    void zoom(int amount) {
-        if (amount > 0 && tileSize + amount > 2000) return;
-        if (amount < 0 && tileSize + amount < 10) return;
-
-        tileSize += amount;
     }
 }

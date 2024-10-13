@@ -7,8 +7,10 @@ class Keys {
         {"q", "DRAW-SHEET"},
         {"o", "ZOOM-OUT"},
         {"u", "ZOOM-IN"},
+        {"r", "RELOAD"},
+
         {"w", "ACCELERATE"},
-        {"s", "DECELERATE"},
+        {"s", "BRAKE"},
         {"a", "TURN-LEFT"},
         {"d", "TURN-RIGHT"},
 

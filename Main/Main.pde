@@ -1,6 +1,4 @@
-// int WIDTH = 1900;
-// int HEIGHT = 1000;
-int WIDTH = 1400;
+int WIDTH = 1420;
 int HEIGHT = 800;
 Game game;
 

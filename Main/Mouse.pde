@@ -13,15 +13,15 @@ class Mouse {
 
     void drawTile() {
         if (!keys.actions.get("DRAW-SHEET")) {
-            float centeredX = mouseX + map.position.x - (WIDTH / 2);
-            float centeredY = mouseY + map.position.y - (HEIGHT / 2);
+            float centeredX = mouseX + map.position.x - (player.camera.x);
+            float centeredY = mouseY + map.position.y - (player.camera.y);
 
             int tileX = (int) (centeredX / map.tileSize);
             int tileY = (int) (centeredY / map.tileSize);
 
             if (tileX >= 0 && tileX < map.layout[0].length && tileY >= 0 && tileY < map.layout.length) {
                 map.layout[tileY][tileX] = drawTile;
-                map.save("Maps/Map1.txt");
+                map.save();
             }
         }
     }
