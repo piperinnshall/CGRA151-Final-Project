@@ -1,5 +1,6 @@
 int WIDTH = 1900;
 int HEIGHT = 1060;
+State state;
 Game game;
 
 void settings() {
@@ -9,10 +10,10 @@ void settings() {
 
 void setup() {
     game = new Game();
+    state = new State();
 }
 
 void draw() {
     background(0);
-    //game.run();
-    game.dev();
+    state.run();
 }

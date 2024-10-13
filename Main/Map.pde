@@ -10,7 +10,7 @@ class Map {
     }
 
     void setup() {
-        tileSize = 96;
+        tileSize = 64;
         position = new PVector(0, 0);
 
         try {
@@ -58,6 +58,17 @@ class Map {
 
     void move() {
         position.add(new PVector(-player.currentSpeed * cos(player.rotation), -player.currentSpeed * sin(player.rotation)));
+    }
+
+    void move(int dist) {
+        if (keys.actions.get("MAP-UP")) map.position.y -= dist;
+        if (keys.actions.get("MAP-DOWN")) map.position.y += dist;
+        if (keys.actions.get("MAP-LEFT")) map.position.x -= dist;
+        if (keys.actions.get("MAP-RIGHT")) map.position.x += dist;
+        if (keys.actions.get("ZOOM-OUT")) map.tileSize -= 2;
+        if (keys.actions.get("ZOOM-IN")) map.tileSize += 2;
+        if (keys.actions.get("DRAW-SHEET")) tileset.draw(28);
+        if (keys.actions.get("RELOAD")) map.setup();
     }
 
     void update() {

@@ -1,10 +1,21 @@
 class Parallax {
-    PImage[] layers = new PImage[6];
-    float[] speed = new float[6];
-    float offset = 0;
-    float scrollSpeed = 0.5;
+    String[] paths;
+    PImage[] layers;
+    float[] speed;
+    float offset;
+    float scrollSpeed;
 
     Parallax(String[] paths) {
+        this.paths = paths;
+        setup();
+    }
+
+    void setup() {
+        layers = new PImage[paths.length];
+        speed = new float[paths.length];
+        offset = 0;
+        scrollSpeed = 0.5;
+
         for (int i = 0; i < layers.length; i++) {
             layers[i] = loadImage(paths[i]);
             speed[i] = map(i, 0, layers.length - 1, 0.1, 1.0);
@@ -23,3 +34,4 @@ class Parallax {
         }
     }
 }
+

@@ -28,7 +28,7 @@ class Tileset {
 
     void draw(int tileSize) {
         textAlign(CENTER, CENTER);
-        fill(255);
+
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < cols; x++) {
                 int index = y * cols + x;
@@ -38,7 +38,7 @@ class Tileset {
                 image(tiles[index], tileX, tileY, tileSize, tileSize);
 
                 fill(255);
-                textSize(10);
+                textFont(createFont("Arial", 10));
                 text(index, tileX + tileSize / 2, tileY + tileSize / 2);
             }
         }

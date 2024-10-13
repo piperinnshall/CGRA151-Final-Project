@@ -1,19 +1,22 @@
 class Keys {
     String[][] binds = {
-        {"i", "MOVE-UP"},
-        {"j", "MOVE-LEFT"},
-        {"k", "MOVE-DOWN"},
-        {"l", "MOVE-RIGHT"},
-        {"q", "DRAW-SHEET"},
-        {"o", "ZOOM-OUT"},
-        {"u", "ZOOM-IN"},
-        {"r", "RELOAD"},
-
         {"w", "ACCELERATE"},
         {"s", "BRAKE"},
         {"a", "TURN-LEFT"},
         {"d", "TURN-RIGHT"},
 
+        {"w", "MAP-UP"},
+        {"s", "MAP-DOWN"},
+        {"a", "MAP-LEFT"},
+        {"d", "MAP-RIGHT"},
+        {"z", "ZOOM-OUT"},
+        {"x", "ZOOM-IN"},
+        {"q", "DRAW-SHEET"},
+        {"r", "RELOAD"},
+
+        {"w", "MENU-UP"},
+        {"s", "MENU-DOWN"},
+        {"e", "MENU-ENTER"},
     };
 
     HashMap<String, Boolean> actions;
@@ -24,9 +27,9 @@ class Keys {
     }
 
     void setup() {
-        for (int i = 0; i < binds.length; i++) {
-            String action = binds[i][1];
-            actions.put(action, false);
+        for (String[] bind : binds) {
+            String action = bind[1];
+            actions.put(action, false); 
         }
     }
 }
@@ -34,9 +37,9 @@ class Keys {
 void keyPressed() {
     String lower = Character.toString(Character.toLowerCase(key));
 
-    for (int i = 0; i < keys.binds.length; i++) {
-        if (keys.binds[i][0].equals(lower)) {
-            String action = keys.binds[i][1];
+    for (String[] bind : keys.binds) {
+        if (bind[0].equals(lower)) {
+            String action = bind[1];
             keys.actions.put(action, true);
         }
     }
@@ -45,9 +48,9 @@ void keyPressed() {
 void keyReleased() {
     String lower = Character.toString(Character.toLowerCase(key));
 
-    for (int i = 0; i < keys.binds.length; i++) {
-        if (keys.binds[i][0].equals(lower)) {
-            String action = keys.binds[i][1];
+    for (String[] bind : keys.binds) {
+        if (bind[0].equals(lower)) {
+            String action = bind[1];
             keys.actions.put(action, false);
         }
     }
