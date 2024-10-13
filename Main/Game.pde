@@ -16,7 +16,7 @@ class Game {
 
     private void loadAssets() {
         String tilesetPath = "8BITCanariPackTopDown/TILESET/PixelPackTOPDOWN8BIT.png";
-        String mapPath = "Maps/Map2";
+        String mapPath = "Map2";
         String[] parallaxPaths = 
             new String[] {
                 "ScifiSpaceAssetsNAv1/PremadeParallax/PremadeParallax3/bg1.png",

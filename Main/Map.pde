@@ -14,7 +14,7 @@ class Map {
         position = new PVector(0, 0);
 
         try {
-            String[] lines = loadStrings(path + ".txt");
+            String[] lines = loadStrings("Maps/" + path + ".txt");
 
             if (lines == null || lines.length == 0) {
                 throw new Exception("File could not be read: " + path);
