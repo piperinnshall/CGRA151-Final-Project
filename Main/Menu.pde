@@ -1,12 +1,12 @@
-String[] paths;
-PFont[] fonts;
-String[] buttons;
-int index;
-int interval;
-
 class Menu {
     String[] paths;
     PFont[] fonts;
+    String[] menuItems;
+    int index;
+    int interval;
+    boolean pressedUp;
+    boolean pressedDown;
+    boolean pressedEnter;
 
     Menu(String[] paths) {
         this.paths = paths;
@@ -15,8 +15,6 @@ class Menu {
 
     void setup() {
         fonts = new PFont[paths.length];
-        buttons = new String[]{"PLAY", "MAPS", "SETTINGS"};
-        index = 0;
         interval = 30;
 
         for (int i = 0; i < paths.length; i++) {
@@ -24,58 +22,95 @@ class Menu {
         }
     }
 
-    void render() {
-        fill(255);
-        textFont(fonts[0]);
-        textSize(64);
-        String name = "Your Game Name";
-        text(name, (width - textWidth(name)) / 2, height / 8);
+    void render(String[] items, float startY) {
+        this.menuItems = items;
 
-        for (int i = 0; i < buttons.length; i++) {
+        float fontRef = 32;
+        float heightRef = 1080;
+
+        for (int i = 0; i < menuItems.length; i++) {
             if (index == i) {
                 textFont(fonts[3]);
             } else {
                 textFont(fonts[2]);
             }
-            textSize(32);
-            text(buttons[i], (width - textWidth(buttons[i])) / 2, height / 2 + i * 50);
+            textSize(fontRef / heightRef * height);
+            text(menuItems[i], (width - textWidth(menuItems[i])) / 2, startY + i * 50);
         }
     }
 
-    boolean pressedUp = false;
-    boolean pressedDown = false;
-
     void update() {
-        if (keys.actions.get("MENU-UP")) {
+        if (keys.actions.get("menu up")) {
             if (!pressedUp) {
                 pressedUp = true;
-                index = (index - 1 + buttons.length) % buttons.length;
+                index = (index - 1 + menuItems.length) % menuItems.length;
             }
         } else {
             pressedUp = false;
         }
 
-        if (keys.actions.get("MENU-DOWN")) {
+        if (keys.actions.get("menu down")) {
             if (!pressedDown) {
                 pressedDown = true;
-                index = (index + 1) % buttons.length;
+                index = (index + 1) % menuItems.length;
             }
         } else {
             pressedDown = false;
         }
 
-        if (keys.actions.get("MENU-ENTER")) {
-            switch (buttons[index]) {
-                case "PLAY":
-                    state.state = GameState.PLAY;
-                    break;
-                case "MAPS":
-                    state.state = GameState.MAPS;
-                    break;
-                case "SETTINGS":
-                    state.state = GameState.SETTINGS;
-                    break;
+        if (keys.actions.get("menu enter")) {
+            if (!pressedEnter){
+                pressedEnter = true;
+                switch (menuItems[index]) {
+                    case "PLAY":
+                        state.state = GameState.PLAY;
+                        break;
+                    case "MAPS":
+                        state.state = GameState.MAPS;
+                        break;
+                    case "SETTINGS":
+                        state.state = GameState.SETTINGS;
+                        break;
+                    case "KEYS":
+                        state.state = GameState.KEYS;
+                        break;
+                    case "BACK":
+                        state.state = GameState.MENU;
+                        break;
+                    case "1920 x 1080    16:9":
+                        windowResize(1920, 1080);
+                        break;
+                    case "1920 x 1024    16:10":
+                        windowResize(1920, 1024);
+                        break;
+                    case "1440 x 1080    4:3":
+                        windowResize(1440, 1080);
+                        break;
+                    case "1680 x 1050    16:10":
+                        windowResize(1680, 1050);
+                        break;
+                    case "EDIT MAP 1":
+                        map = map1;
+                        state.state = GameState.EDIT;
+                        break;
+                    case "EDIT MAP 2":
+                        map = map2;
+                        state.state = GameState.EDIT;
+                        break;
+                }
             }
+        } else {
+            pressedEnter = false;
         }
+    }
+
+    void header(String header) {
+        float fontRef = 64;
+        float heightRef = 1080;
+
+        fill(255);
+        textFont(fonts[0]);
+        textSize(fontRef / heightRef * height);
+        text(header, (width - textWidth(header)) / 2, height / 3);
     }
 }

@@ -48,8 +48,8 @@ class Map {
                 float centeredY = tileY + player.camera.y;
 
                 if (tile != null &&
-                        centeredX + tileSize > 0 && centeredX < WIDTH &&
-                        centeredY + tileSize > 0 && centeredY < HEIGHT) {
+                        centeredX + tileSize > 0 && centeredX < width &&
+                        centeredY + tileSize > 0 && centeredY < height) {
                     image(tile, centeredX, centeredY, tileSize, tileSize);
                 }
             }
@@ -61,14 +61,14 @@ class Map {
     }
 
     void move(int dist) {
-        if (keys.actions.get("MAP-UP")) map.position.y -= dist;
-        if (keys.actions.get("MAP-DOWN")) map.position.y += dist;
-        if (keys.actions.get("MAP-LEFT")) map.position.x -= dist;
-        if (keys.actions.get("MAP-RIGHT")) map.position.x += dist;
-        if (keys.actions.get("ZOOM-OUT")) map.tileSize -= 2;
-        if (keys.actions.get("ZOOM-IN")) map.tileSize += 2;
-        if (keys.actions.get("DRAW-SHEET")) tileset.draw(28);
-        if (keys.actions.get("RELOAD")) map.setup();
+        if (keys.actions.get("map up")) map.position.y -= dist;
+        if (keys.actions.get("map down")) map.position.y += dist;
+        if (keys.actions.get("map left")) map.position.x -= dist;
+        if (keys.actions.get("map right")) map.position.x += dist;
+        if (keys.actions.get("zoom out")) map.tileSize -= 2;
+        if (keys.actions.get("zoom in")) map.tileSize += 2;
+        if (keys.actions.get("draw sheet")) tileset.draw(28);
+        if (keys.actions.get("reload")) map.setup();
     }
 
     void update() {
@@ -89,7 +89,7 @@ class Map {
         }
 
         try {
-            saveStrings(path + ".txt", lines);
+            saveStrings("Maps/" + path + ".txt", lines);
         } catch (Exception e) {
             println("An error occurred: " + e.getMessage());
         }

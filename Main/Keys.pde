@@ -1,22 +1,22 @@
 class Keys {
     String[][] binds = {
-        {"w", "ACCELERATE"},
-        {"s", "BRAKE"},
-        {"a", "TURN-LEFT"},
-        {"d", "TURN-RIGHT"},
+        {"w", "accelerate"},
+        {"s", "brake"},
+        {"a", "turn left"},
+        {"d", "turn right"},
 
-        {"w", "MAP-UP"},
-        {"s", "MAP-DOWN"},
-        {"a", "MAP-LEFT"},
-        {"d", "MAP-RIGHT"},
-        {"z", "ZOOM-OUT"},
-        {"x", "ZOOM-IN"},
-        {"q", "DRAW-SHEET"},
-        {"r", "RELOAD"},
+        {"w", "map up"},
+        {"s", "map down"},
+        {"a", "map left"},
+        {"d", "map right"},
+        {"z", "zoom out"},
+        {"x", "zoom in"},
+        {"q", "draw sheet"},
+        {"r", "reload"},
 
-        {"w", "MENU-UP"},
-        {"s", "MENU-DOWN"},
-        {"e", "MENU-ENTER"},
+        {"w", "menu up"},
+        {"s", "menu down"},
+        {"e", "menu enter"},
     };
 
     HashMap<String, Boolean> actions;

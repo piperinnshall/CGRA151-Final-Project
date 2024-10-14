@@ -12,7 +12,7 @@ class Mouse {
     }
 
     void drawTile() {
-        if (!keys.actions.get("DRAW-SHEET")) {
+        if (!keys.actions.get("draw sheet")) {
             float centeredX = mouseX + map.position.x - (player.camera.x);
             float centeredY = mouseY + map.position.y - (player.camera.y);
 
@@ -28,16 +28,20 @@ class Mouse {
 }
 
 void mouseDragged() {
-    if (!keys.actions.get("DRAW-SHEET")) {
-        mouse.drawTile();
+    if (state.state == GameState.edit) { 
+        if (!keys.actions.get("draw sheet")) {
+            mouse.drawTile();
+        }
     }
 }
 
 void mousePressed() {
-    if (keys.actions.get("DRAW-SHEET")) {
-        mouse.selectTile();
-    } else {
-        mouse.drawTile();
+    if (state.state == GameState.edit) { 
+        if (keys.actions.get("draw sheet")) {
+            mouse.selectTile();
+        } else {
+            mouse.drawTile();
+        }
     }
 }
 

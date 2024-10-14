@@ -1,10 +1,8 @@
-int WIDTH = 1900;
-int HEIGHT = 1060;
 State state;
 Game game;
 
 void settings() {
-    size(WIDTH, HEIGHT);
+    size(1920, 1080);
     noSmooth();
 }
 

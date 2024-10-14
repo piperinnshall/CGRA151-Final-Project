@@ -2,6 +2,8 @@ ArrayList<Entity> entities;
 Player player;
 Tileset tileset;
 Map map;
+Map map1;
+Map map2;
 Parallax parallax;
 Menu menu;
 Keys keys;
@@ -16,7 +18,8 @@ class Game {
 
     private void loadAssets() {
         String tilesetPath = "8BITCanariPackTopDown/TILESET/PixelPackTOPDOWN8BIT.png";
-        String mapPath = "Map2";
+        String mapPath1 = "Map1";
+        String mapPath2 = "Map2";
         String[] parallaxPaths = 
             new String[] {
                 "ScifiSpaceAssetsNAv1/PremadeParallax/PremadeParallax3/bg1.png",
@@ -38,7 +41,8 @@ class Game {
             };
 
         tileset = new Tileset(tilesetPath, 16, 16);
-        map = new Map(mapPath);
+        map1 = new Map(mapPath1);
+        map2 = new Map(mapPath2);
         parallax = new Parallax(parallaxPaths);
         menu = new Menu(fontPaths);
     }
@@ -60,7 +64,7 @@ class Game {
         float health = 0;
         float size = 120;
         float rotationSpeed = 0.03;
-        PVector camera = new PVector(WIDTH / 2, HEIGHT / 2);
+        PVector camera = new PVector(width / 2, height / 2);
 
         player = new Player(rotation, acceleration, deceleration, health, size, maxSpeed, maxReverse, rotationSpeed, camera);
         entities.add(player);
