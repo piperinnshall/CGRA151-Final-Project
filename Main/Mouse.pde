@@ -28,7 +28,7 @@ class Mouse {
 }
 
 void mouseDragged() {
-    if (state.state == GameState.edit) { 
+    if (state.state == GameState.EDITING) { 
         if (!keys.actions.get("draw sheet")) {
             mouse.drawTile();
         }
@@ -36,7 +36,7 @@ void mouseDragged() {
 }
 
 void mousePressed() {
-    if (state.state == GameState.edit) { 
+    if (state.state == GameState.EDITING) { 
         if (keys.actions.get("draw sheet")) {
             mouse.selectTile();
         } else {

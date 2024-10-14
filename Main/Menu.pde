@@ -22,8 +22,25 @@ class Menu {
         }
     }
 
-    void render(String[] items, float startY) {
+    void header(String[] header) {
+        textAlign(LEFT);
+
+        float fontRef = 64;
+        float heightRef = 1080;
+        float fontSize = fontRef / heightRef * height;
+
+        fill(255);
+        textFont(fonts[0]);
+        textSize(fontSize);
+        text(header[0] + header[1], (width - textWidth(header[0] + header[1])) / 2, height / 3);
+        text(header[2] + header[3] + header[4], (width - textWidth(header[2] + header[3] + header[4])) / 2, height / 3 + fontSize * 1.5);
+    }
+
+    void items(String[] items, float startY) {
         this.menuItems = items;
+
+        textAlign(LEFT);
+        fill(255);
 
         float fontRef = 32;
         float heightRef = 1080;
@@ -74,6 +91,9 @@ class Menu {
                     case "KEYS":
                         state.state = GameState.KEYS;
                         break;
+                    case "SCORE":
+                        state.state = GameState.SCORE;
+                        break;
                     case "BACK":
                         state.state = GameState.MENU;
                         break;
@@ -90,27 +110,25 @@ class Menu {
                         windowResize(1680, 1050);
                         break;
                     case "EDIT MAP 1":
-                        map = map1;
-                        state.state = GameState.EDIT;
+                        game.loadGame(map1);
+                        state.state = GameState.EDITING;
                         break;
                     case "EDIT MAP 2":
-                        map = map2;
-                        state.state = GameState.EDIT;
+                        game.loadGame(map2);
+                        state.state = GameState.EDITING;
+                        break;
+                    case "PLAY MAP 1":
+                        game.loadGame(map1);
+                        state.state = GameState.PLAYING;
+                        break;
+                    case "PLAY MAP 2":
+                        game.loadGame(map2);
+                        state.state = GameState.PLAYING;
                         break;
                 }
             }
         } else {
             pressedEnter = false;
         }
-    }
-
-    void header(String header) {
-        float fontRef = 64;
-        float heightRef = 1080;
-
-        fill(255);
-        textFont(fonts[0]);
-        textSize(fontRef / heightRef * height);
-        text(header, (width - textWidth(header)) / 2, height / 3);
     }
 }

@@ -16,7 +16,7 @@ class Player extends Entity {
         }
 
         if (!keys.actions.get("accelerate") && !keys.actions.get("brake")) {
-            currentSpeed *= currentSpeed < 1 ? 0 : 0.995;
+            currentSpeed *= (currentSpeed > -1 && currentSpeed < 1) ? 0 : 0.995;
         }
 
         if (keys.actions.get("accelerate")) {
@@ -37,6 +37,12 @@ class Player extends Entity {
     }
 
     void update() {
+        if (health <= 0 && state.state == GameState.PLAYING) {
+            score.setup();
+            score.save();
+            state.state = GameState.OVER;
+        }
+
         currentSpeed = constrain(currentSpeed, -maxReverse, maxSpeed);
 
         camera.lerp(center, constrain(map(camera.dist(center), 0, 200, 0.2, 0.1), 0.1, 0.2));

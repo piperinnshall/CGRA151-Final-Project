@@ -1,6 +1,7 @@
 ArrayList<Entity> entities;
 Player player;
 Tileset tileset;
+Score score;
 Map map;
 Map map1;
 Map map2;
@@ -13,11 +14,18 @@ class Game {
     Game() {
         loadAssets();
         loadInputs();
+    }
+
+    void loadGame(Map newMap) {
+        map = newMap;
+        map.setup();
+        score.setup();
         loadEntities();
     }
 
     private void loadAssets() {
         String tilesetPath = "8BITCanariPackTopDown/TILESET/PixelPackTOPDOWN8BIT.png";
+        String scorePath = "HI-SCORE";
         String mapPath1 = "Map1";
         String mapPath2 = "Map2";
         String[] parallaxPaths = 
@@ -41,6 +49,7 @@ class Game {
             };
 
         tileset = new Tileset(tilesetPath, 16, 16);
+        score = new Score(scorePath);
         map1 = new Map(mapPath1);
         map2 = new Map(mapPath2);
         parallax = new Parallax(parallaxPaths);
@@ -61,7 +70,7 @@ class Game {
         float timeToMaxSpeed = 4.0;
         float acceleration = maxSpeed / (60 * timeToMaxSpeed);
         float deceleration = acceleration * 2;
-        float health = 0;
+        float health = 10;
         float size = 120;
         float rotationSpeed = 0.03;
         PVector camera = new PVector(width / 2, height / 2);

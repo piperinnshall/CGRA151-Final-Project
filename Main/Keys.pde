@@ -1,5 +1,7 @@
 class Keys {
     String[][] binds = {
+        {"p", "quit to menu"},
+
         {"w", "accelerate"},
         {"s", "brake"},
         {"a", "turn left"},
@@ -11,7 +13,7 @@ class Keys {
         {"d", "map right"},
         {"z", "zoom out"},
         {"x", "zoom in"},
-        {"q", "draw sheet"},
+        {"c", "draw sheet"},
         {"r", "reload"},
 
         {"w", "menu up"},

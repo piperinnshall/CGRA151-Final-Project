@@ -2,10 +2,12 @@ enum GameState {
     MENU,
     SETTINGS,
     MAPS,
-    EDIT,
+    EDITING,
     KEYS,
     PLAY,
+    PLAYING,
     OVER,
+    SCORE,
 }
 
 class State {
@@ -30,26 +32,34 @@ class State {
             case MAPS:
                 maps();
                 break;
-            case EDIT:
-                edit();
-                break;
             case KEYS:
                 keys();
                 break;
+            case EDITING:
+                editing();
+                break;
             case PLAY:
+                play();
+                break;
+            case PLAYING:
                 playing();
                 break;
             case OVER:
+                score();
+                break;
+            case SCORE:
+                score();
                 break;
         }
     }
 
     void menu() {
-        String[] items = {"PLAY", "KEYS", "SETTINGS", "MAPS"};
+        String[] header = {"WHERE ", "DID ", "THE ", "NOS ", "GO?"};
+        String[] items = {"PLAY", "KEYS", "SETTINGS", "SCORE", "MAPS"};
         parallax.render();
         parallax.update();
-        menu.header("GAME NAME");
-        menu.render(items, height / 2);
+        menu.header(header);
+        menu.items(items, height / 2);
         menu.update();
     }
 
@@ -58,7 +68,7 @@ class State {
 
         parallax.render();
         parallax.update();
-        menu.render(items, height / 2);
+        menu.items(items, height / 2);
         menu.update();
     }
 
@@ -67,7 +77,25 @@ class State {
 
         parallax.render();
         parallax.update();
-        menu.render(items, height / 2);
+        menu.items(items, height / 2);
+        menu.update();
+    }
+
+    void play() {
+        String[] items = {"PLAY MAP 1", "PLAY MAP 2", "BACK"};
+
+        parallax.render();
+        parallax.update();
+        menu.items(items, height / 2);
+        menu.update();
+    }
+
+    void score() {
+        String[] items = {"HIGH SCORE: " + score.score, "BACK"};
+
+        parallax.render();
+        parallax.update();
+        menu.items(items, height / 2);
         menu.update();
     }
 
@@ -82,7 +110,7 @@ class State {
 
         parallax.render();
         parallax.update();
-        menu.render(items, height / 8);
+        menu.items(items, height / 8);
         menu.update();
     }
 
@@ -103,5 +131,7 @@ class State {
             entity.move();
             entity.update();
         }
+
+        score.update();
     }
 }

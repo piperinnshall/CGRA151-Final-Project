@@ -6,7 +6,6 @@ class Map {
 
     Map(String path) {
         this.path = path;
-        setup();
     }
 
     void setup() {
@@ -57,7 +56,21 @@ class Map {
     }
 
     void move() {
-        position.add(new PVector(-player.currentSpeed * cos(player.rotation), -player.currentSpeed * sin(player.rotation)));
+        PVector speed = new PVector(-player.currentSpeed * cos(player.rotation), -player.currentSpeed * sin(player.rotation));
+        PVector nextPosition = PVector.add(position, speed);
+
+        boolean collides = collision(position, nextPosition);
+        if (collides) {
+            position.add(speed.copy().mult(-1));
+            player.currentSpeed = 0;
+            // if (player.currentSpeed > 10) {
+                // player.health--;
+            // }
+        } else {
+            position.add(speed);
+        }
+
+        if (keys.actions.get("quit to menu")) state.state = GameState.MENU;
     }
 
     void move(int dist) {
@@ -69,6 +82,7 @@ class Map {
         if (keys.actions.get("zoom in")) map.tileSize += 2;
         if (keys.actions.get("draw sheet")) tileset.draw(28);
         if (keys.actions.get("reload")) map.setup();
+        if (keys.actions.get("quit to menu")) state.state = GameState.MENU;
     }
 
     void update() {
@@ -76,6 +90,38 @@ class Map {
 
         tileSize = constrain(tileSize, 20, 1000);
     }
+
+
+boolean collision(PVector currentPos, PVector nextPos) {
+    int[] obstacleIDs = {41};
+
+    PVector direction = PVector.sub(nextPos, currentPos);
+    int steps = (int) max(1, PVector.dist(currentPos, nextPos) / tileSize);
+    PVector stepSize = PVector.div(direction, steps);
+
+    PVector[] corners = player.corners();
+
+    for (int i = 0; i <= steps; i++) {
+        PVector point = PVector.add(currentPos, PVector.mult(stepSize, i));
+
+        for (PVector corner : corners) {
+            PVector cornerPos = PVector.add(point, corner);
+            int tileX = (int)(cornerPos.x / tileSize);
+            int tileY = (int)(cornerPos.y / tileSize);
+
+            if (tileX >= 0 && tileX < layout[0].length && tileY >= 0 && tileY < layout.length) {
+                for (int obstacleID : obstacleIDs) {
+                    if (layout[tileY][tileX] == obstacleID) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
 
     void save() {
         String[] lines = new String[layout.length];

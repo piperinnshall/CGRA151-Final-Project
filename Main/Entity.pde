@@ -40,6 +40,7 @@ abstract class Entity {
         PVector[] cornerPositions = corners();
         for (PVector corner : cornerPositions) {
             pushMatrix();
+            corner.add(camera);
             translate(corner.x, corner.y);
             rotate(rotation);
             rectMode(CENTER);
@@ -63,7 +64,6 @@ abstract class Entity {
         for (int i = 0; i < corners.length; i++) {
             PVector corner = corners[i].copy();
             corner.rotate(rotation);
-            corner.add(camera);
             rotatedCorners[i] = corner;
         }
 
